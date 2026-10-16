@@ -403,14 +403,14 @@ function App() {
       </div>
       <div className="relative z-10 min-h-screen">
       <header className="sticky top-0 z-50 border-b border-[#EAE3D5] bg-[#FAF7F2]/90 backdrop-blur-sm">
-        <nav className="mx-auto flex max-w-[900px] items-center justify-between gap-3 px-4 py-4 lg:px-0">
-          <a href="#top" className="flex items-center gap-3">
+        <nav className="mx-auto flex max-w-[900px] items-center justify-between gap-2 px-3 py-3 sm:gap-3 sm:px-4 sm:py-4 lg:px-0">
+          <a href="#top" className="flex shrink-0 items-center gap-2">
             <img
               src="/images/rahiq-logo.png"
               alt="Logo Rahiq — رحيق"
-              className="h-11 w-11 rounded-lg object-cover shadow-sm"
+              className="h-9 w-9 rounded-lg object-cover shadow-sm sm:h-11 sm:w-11"
             />
-            <div className="font-serif text-xl tracking-tight text-[#2C221E]">
+            <div className="whitespace-nowrap font-serif text-lg tracking-tight text-[#2C221E] sm:text-xl">
               Rahiq <span lang="ar" dir="rtl">رحيق</span>
             </div>
           </a>
@@ -434,7 +434,7 @@ function App() {
             <button
               type="button"
               onClick={() => setLanguage((current) => (current === 'fr' ? 'ar' : 'fr'))}
-              className="inline-flex rounded-full border border-[#C87D20] px-2 py-1.5 text-[9px] font-semibold text-[#C87D20] md:hidden"
+              className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-[#C87D20] px-2 py-1.5 text-[9px] font-semibold text-[#C87D20] md:hidden"
               aria-label={language === 'fr' ? 'Switch to Arabic' : 'Retour en français'}
             >
               {language === 'fr' ? 'AR' : 'FR'}
@@ -449,16 +449,17 @@ function App() {
               }}
               target={WHATSAPP_NUMBER ? '_blank' : undefined}
               rel={WHATSAPP_NUMBER ? 'noreferrer' : undefined}
-              className="inline-flex items-center gap-2 rounded-full border border-[#C87D20] px-4 py-2 text-[11px] font-semibold text-[#C87D20] transition hover:bg-[#C87D20] hover:text-white"
+              aria-label={t.secondaryCta}
+              className="inline-flex min-h-10 shrink-0 items-center gap-2 rounded-full border border-[#C87D20] px-2.5 py-2 text-[11px] font-semibold text-[#C87D20] transition hover:bg-[#C87D20] hover:text-white sm:px-4"
             >
               <ShoppingBag className="h-3.5 w-3.5" />
-              {t.secondaryCta}
+              <span className="hidden min-[400px]:inline">{t.secondaryCta}</span>
             </a>
             <button
               type="button"
               aria-label={t.menu}
               onClick={() => setMenuOpen((value) => !value)}
-              className="inline-flex items-center justify-center rounded-full border border-[#C87D20] p-2 text-[#C87D20] md:hidden"
+              className="inline-flex min-h-10 min-w-10 items-center justify-center rounded-full border border-[#C87D20] p-2 text-[#C87D20] md:hidden"
             >
               {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -469,14 +470,14 @@ function App() {
           <div className="border-t border-[#EAE3D5] bg-[#FAF7F2] px-4 py-3 md:hidden">
             <div className="flex flex-col gap-3 text-sm text-[#6E655F]">
               {navItems.map((item) => (
-                <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>
+                <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center">
                   {item.label[language]}
                 </a>
               ))}
               <button
                 type="button"
                 onClick={() => setLanguage((current) => (current === 'fr' ? 'ar' : 'fr'))}
-                className="mt-2 rounded-full border border-[#C87D20] px-3 py-2 text-left text-xs font-semibold text-[#C87D20]"
+                className="mt-2 min-h-11 rounded-full border border-[#C87D20] px-3 py-2 text-left text-xs font-semibold text-[#C87D20]"
               >
                 {t.languageToggle}
               </button>
@@ -489,7 +490,7 @@ function App() {
         <section className="relative overflow-hidden bg-gradient-to-br from-[#FAF7F2] via-[#F7F0E4] to-[#EFE3CE]">
           <div className="mx-auto grid min-h-[520px] max-w-[1280px] grid-cols-1 items-center gap-9 px-4 py-12 md:min-h-[480px] md:py-14 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12 lg:px-8">
             <div className="mx-auto w-full max-w-[460px] text-left text-[#2C221E]" dir={isRTL ? 'rtl' : 'ltr'}>
-              <h1 className="font-serif text-4xl font-bold tracking-tight md:text-5xl">{t.heroTitle}</h1>
+              <h1 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">{t.heroTitle}</h1>
               <p className="mt-4 text-sm text-[#6E655F] md:text-base">{t.heroSubtitle}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <button
@@ -551,7 +552,7 @@ function App() {
                   loading="lazy"
                 />
                 <div className="space-y-3 p-4">
-                  <h3 className="font-serif text-[1.7rem] leading-none text-[#2C221E]">{language === 'ar' ? product.titleAr : product.title}</h3>
+                  <h3 className="break-words font-serif text-[1.5rem] leading-tight text-[#2C221E] sm:text-[1.7rem] sm:leading-none">{language === 'ar' ? product.titleAr : product.title}</h3>
                   <p className="text-[11px] leading-5 text-[#6E655F]">{language === 'ar' ? product.descriptionAr : product.description}</p>
                   <div className="text-[11px] font-semibold text-[#C87D20]">
                     {product.fixedPrice ? formatPrice(product.price, language) : `${t.fromPrice} ${formatPrice(product.price, language)}`}
@@ -560,14 +561,14 @@ function App() {
                     <button
                       type="button"
                       onClick={() => openOrderModal(product)}
-                      className="flex-1 rounded-full bg-[#C87D20] px-3 py-2 text-[10px] font-semibold text-white transition hover:bg-[#B06B18]"
+                      className="min-h-11 flex-1 rounded-full bg-[#C87D20] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#B06B18]"
                     >
                       {t.secondaryCta}
                     </button>
                     <button
                       type="button"
                       onClick={() => openProductDetails(product)}
-                      className="rounded-full border border-[#E5DEC9] px-3 py-2 text-[10px] font-medium text-[#2C221E]"
+                      className="min-h-11 rounded-full border border-[#E5DEC9] px-3 py-2 text-xs font-medium text-[#2C221E]"
                     >
                       {language === 'ar' ? 'التفاصيل' : 'Détails'}
                     </button>
@@ -594,18 +595,18 @@ function App() {
                     loading="lazy"
                   />
                   <div className="space-y-3 p-4">
-                    <h3 className="font-serif text-[1.7rem] leading-none text-[#2C221E]">{language === 'ar' ? pack.titleAr : pack.title}</h3>
+                    <h3 className="break-words font-serif text-[1.5rem] leading-tight text-[#2C221E] sm:text-[1.7rem] sm:leading-none">{language === 'ar' ? pack.titleAr : pack.title}</h3>
                     <p className="text-[11px] leading-5 text-[#6E655F]">{language === 'ar' ? pack.descriptionAr : pack.description}</p>
                     <div className="text-[11px] font-semibold text-[#C87D20]">{t.fromPrice} {formatPrice(pack.price, language)}</div>
                     <div className="flex gap-2 pt-1">
                       <button
                         type="button"
                         onClick={() => openOrderModal({ ...pack, title: language === 'ar' ? pack.titleAr : pack.title, description: language === 'ar' ? pack.descriptionAr : pack.description, sizeOptions: pack.sizeOptions })}
-                        className="flex-1 rounded-full bg-[#C87D20] px-3 py-2 text-[10px] font-semibold text-white transition hover:bg-[#B06B18]"
+                        className="min-h-11 flex-1 rounded-full bg-[#C87D20] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[#B06B18]"
                       >
                         {t.secondaryCta}
                       </button>
-                      <button type="button" onClick={() => openProductDetails(pack)} className="rounded-full border border-[#E5DEC9] px-3 py-2 text-[10px] font-medium text-[#2C221E]">
+                      <button type="button" onClick={() => openProductDetails(pack)} className="min-h-11 rounded-full border border-[#E5DEC9] px-3 py-2 text-xs font-medium text-[#2C221E]">
                         {language === 'ar' ? 'التفاصيل' : 'Détails'}
                       </button>
                     </div>
@@ -622,7 +623,7 @@ function App() {
               <img
                 src="/images/bocaux-gourmands.jpg"
                 alt={language === 'ar' ? 'مرطبانات مغربية من العسل والمكسرات مرتبة بعناية.' : 'Bocaux marocains de miel et de fruits secs soigneusement présentés.'}
-                className="h-[330px] w-full object-cover"
+                className="h-56 w-full object-cover sm:h-[330px]"
                 loading="lazy"
               />
             </div>
@@ -698,11 +699,11 @@ function App() {
       </footer>
 
       {selectedDetailsProduct && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 p-4">
-          <div className="w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl">
+        <div className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-black/40 p-3 sm:p-4">
+          <div className="my-auto w-full max-w-2xl overflow-hidden rounded-2xl bg-white shadow-2xl">
             <div className="flex items-center justify-between border-b border-[#EAE3D5] px-5 py-4">
-              <h3 className="font-serif text-3xl text-[#2C221E]">{language === 'ar' ? selectedDetailsProduct.titleAr : selectedDetailsProduct.title}</h3>
-              <button type="button" onClick={closeProductDetails} className="rounded-full border border-[#EAE3D5] p-2 text-[#2C221E]">
+              <h3 className="break-words font-serif text-2xl text-[#2C221E] sm:text-3xl">{language === 'ar' ? selectedDetailsProduct.titleAr : selectedDetailsProduct.title}</h3>
+              <button type="button" onClick={closeProductDetails} className="min-h-10 min-w-10 rounded-full border border-[#EAE3D5] p-2 text-[#2C221E]">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -712,16 +713,16 @@ function App() {
                 <img
                   src={selectedDetailsProduct.image}
                   alt={selectedDetailsProduct.imageAlt[language]}
-                  className="h-full w-full object-cover md:h-[320px]"
+                  className="h-56 w-full object-cover md:h-[320px]"
                 />
               </div>
 
-              <div className="space-y-5 p-5">
+              <div className="space-y-4 p-4 sm:space-y-5 sm:p-5">
                 <div>
                   <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#C87D20]">
                     {language === 'ar' ? 'منتج' : 'Produit'}
                   </div>
-                  <h4 className="mt-2 font-serif text-3xl text-[#2C221E]">
+                  <h4 className="mt-2 break-words font-serif text-2xl text-[#2C221E] sm:text-3xl">
                     {language === 'ar' ? selectedDetailsProduct.titleAr : selectedDetailsProduct.title}
                   </h4>
                 </div>
@@ -745,7 +746,7 @@ function App() {
                         key={size}
                         type="button"
                         onClick={() => setSelectedDetailsSize(size)}
-                        className={`rounded-full border px-3 py-2 text-xs font-medium ${
+                        className={`min-h-10 rounded-full border px-3 py-2 text-xs font-medium ${
                           selectedDetailsSize === size
                             ? 'border-[#C87D20] bg-[#C87D20] text-white'
                             : 'border-[#EAE3D5] bg-white text-[#2C221E]'
@@ -757,7 +758,7 @@ function App() {
                   </div>
                 </div>
 
-                <div className="flex gap-3 pt-2">
+                <div className="flex flex-col gap-3 pt-2 sm:flex-row">
                   <button
                     type="button"
                     onClick={() => {
@@ -783,11 +784,11 @@ function App() {
       )}
 
       {selectedProduct && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 p-4">
-          <div className="w-full max-w-xl rounded-2xl bg-white p-5 shadow-2xl">
+        <div className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-black/40 p-3 sm:p-4">
+          <div className="my-auto w-full max-w-xl rounded-2xl bg-white p-4 shadow-2xl sm:p-5">
             <div className="mb-4 flex items-center justify-between gap-3">
-              <h3 className="font-serif text-3xl text-[#2C221E]">{t.orderTitle}</h3>
-              <button type="button" onClick={closeOrderModal} className="rounded-full border border-[#EAE3D5] p-2 text-[#2C221E]">
+              <h3 className="font-serif text-2xl text-[#2C221E] sm:text-3xl">{t.orderTitle}</h3>
+              <button type="button" onClick={closeOrderModal} className="min-h-10 min-w-10 rounded-full border border-[#EAE3D5] p-2 text-[#2C221E]">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -855,13 +856,13 @@ function App() {
                 />
               </label>
 
-              <div className="flex items-center gap-3">
+              <div className="flex min-h-11 items-center gap-3">
                 <span className="text-sm text-[#2C221E]">{t.quantity}</span>
-                <button type="button" onClick={() => setOrderForm((current) => ({ ...current, quantity: Math.max(1, current.quantity - 1) }))} className="rounded-full border border-[#EAE3D5] p-2 text-[#2C221E]">
+                <button type="button" onClick={() => setOrderForm((current) => ({ ...current, quantity: Math.max(1, current.quantity - 1) }))} className="min-h-11 min-w-11 rounded-full border border-[#EAE3D5] p-2 text-[#2C221E]">
                   <Minus className="h-4 w-4" />
                 </button>
                 <span className="min-w-6 text-center text-sm font-semibold text-[#2C221E]">{orderForm.quantity}</span>
-                <button type="button" onClick={() => setOrderForm((current) => ({ ...current, quantity: current.quantity + 1 }))} className="rounded-full border border-[#EAE3D5] p-2 text-[#2C221E]">
+                <button type="button" onClick={() => setOrderForm((current) => ({ ...current, quantity: current.quantity + 1 }))} className="min-h-11 min-w-11 rounded-full border border-[#EAE3D5] p-2 text-[#2C221E]">
                   <Plus className="h-4 w-4" />
                 </button>
               </div>
@@ -895,11 +896,11 @@ function App() {
               {orderError && <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{orderError}</div>}
               {orderNotice && <div className="rounded-xl border border-[#EAE3D5] bg-[#F7F0E0] px-3 py-2 text-sm text-[#6E655F]">{orderNotice}</div>}
 
-              <div className="flex justify-end gap-3 pt-2">
-                <button type="button" onClick={closeOrderModal} className="rounded-full border border-[#EAE3D5] px-4 py-2.5 text-sm font-semibold text-[#2C221E]">
+              <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
+                <button type="button" onClick={closeOrderModal} className="min-h-11 rounded-full border border-[#EAE3D5] px-4 py-2.5 text-sm font-semibold text-[#2C221E]">
                   {t.orderCancel}
                 </button>
-                <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-[#C87D20] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#B06B18]">
+                <button type="submit" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#C87D20] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#B06B18]">
                   <Check className="h-4 w-4" />
                   {t.orderConfirm}
                 </button>
