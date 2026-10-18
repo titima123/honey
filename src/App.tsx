@@ -511,25 +511,18 @@ function App() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="h-56 overflow-hidden rounded-2xl border border-[#EAE3D5] bg-[#3A2A1D] shadow-lg sm:h-64 lg:h-[320px]">
+              <div>
                 {videoUnavailable ? (
                   <img
-                    src="/images/hero-miel-fruits-secs.jpg"
-                    alt={language === 'ar' ? 'عسل مغربي بالمكسرات والفواكه المجففة.' : 'Miel marocain aux fruits secs et fruits séchés.'}
-                    className="h-full w-full object-cover"
+                    src=""
                   />
                 ) : (
                   <video
                     className="h-full w-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    poster="/images/hero-miel-fruits-secs.jpg"
-                    onError={() => setVideoUnavailable(true)}
+                 
+                     onError={() => setVideoUnavailable(true)}
                   >
-                    <source src="/videos/rahiq-product.mp4" type="video/mp4" />
+                    <source src="" type="video/mp4" />
                   </video>
                 )}
               </div>
